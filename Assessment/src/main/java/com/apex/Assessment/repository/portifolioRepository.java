@@ -14,6 +14,14 @@ import com.apex.Assessment.model.portfolio;
 
 public interface portifolioRepository extends JpaRepository<portfolio, String> {
 
-	@Query("SELECT r.SecurityID,r.CurrentPosition,r.CurrentPrice FROM portfolio r where r.AccountName = :AccountName")
-	List<String> findByAccountName(@Param("AccountName") int AccountName);
+	//@Query("SELECT r.SecurityID,r.CurrentPosition,r.CurrentPrice FROM portfolio r where r.AccountName = :AccountName")
+	@Query("select po from portfolio po where po.SecurityID like %?1% "
+			+"or po.AccountName like %?1%"
+			+"or po.CurrentPosition like %?1%"
+			+"or po.CurrentPrice like %?1%"
+			+"or po.PortfolioName like %?1%"
+			+"or po.SODPosition like %?1%"
+			+"or po.Side like %?1%"
+			+"or po.TotalPL like %?1%")
+	List<portfolio> findBylist(@Param("keyword") String keyword);
 }

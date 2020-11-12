@@ -24,14 +24,16 @@ public class portifolioServiceImplementation implements portifolioService {
 	
 
 	@Override
-	public List<String> findByAccountName(int AccountName) {
+	public List<portfolio> findBylist(String keyword) {
 		// TODO Auto-generated method stub
-		if(preo.findByAccountName(AccountName).isEmpty())
+		System.out.println("inside Id"+keyword);
+		if(preo.findBylist(keyword).isEmpty())
 		{
+			System.out.println("empty");
 			return null;
 		}
 		
-		return preo.findByAccountName(AccountName);
+		return preo.findBylist(keyword);
 	}
 
 }

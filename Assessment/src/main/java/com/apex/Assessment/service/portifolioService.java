@@ -9,5 +9,5 @@ public interface portifolioService {
 	
 	List<portfolio> list();
 	
-	List<String> findByAccountName(int AccountName);
+	List<portfolio> findBylist(String keyword);
 }

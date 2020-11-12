@@ -36,20 +36,20 @@ public class portifolioContoller {
 		return new ResponseEntity<List<portfolio>> (list,HttpStatus.OK);
 	}
 	
-@GetMapping("/users/{AccountName}")
+@GetMapping("/users/{keyword}")
 	
-	public ResponseEntity<List<String>> getbyID(@PathVariable("AccountName") int AccountName) throws Exception
+	public ResponseEntity<List<portfolio>> getbyID(@PathVariable("keyword") String keyword) throws Exception
 	{
 
-		System.out.println("inside Id");
-		List<String> list= pservie.findByAccountName(AccountName);
+		System.out.println("inside Id"+keyword);
+		List<portfolio> list= pservie.findBylist(keyword);
 				System.out.println(list);
 				
 				if(list==null)
 				{
 				    throw new Exception("Fields are not exists");
 				}
-		return new ResponseEntity<List<String>>(list,HttpStatus.OK);
+		return new ResponseEntity<List<portfolio>>(list,HttpStatus.OK);
 	}
 	
 }
